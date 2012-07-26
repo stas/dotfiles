@@ -1,0 +1,70 @@
+# Get antigen: https://github.com/zsh-users/antigen
+source "$HOME/.zsh/antigen/antigen.zsh"
+
+# Load the oh-my-zsh's library.
+antigen-lib
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen-bundle git
+antigen-bundle bundler
+antigen-bundle github
+antigen-bundle rake
+antigen-bundle command-not-found
+
+# Syntax highlighting bundle.
+antigen-bundle zsh-users/zsh-syntax-highlighting
+# ZSH port of Fish shell's history search feature.
+antigen-bundle zsh-users/zsh-history-substring-search
+
+# Load the theme.
+antigen-theme gallifrey
+
+# Tell antigen that you're done.
+antigen-apply
+
+# don't write over existing files with >, use >! instead
+setopt NOCLOBBER
+# watch other user login/out
+watch=notme
+
+source "$HOME/.rvm/scripts/rvm"
+export PATH="$HOME/.bin:$PATH"
+
+export EDITOR='vim'
+export VISUAL='vim'
+export EMAIL='Stas Sușcov <stas@nerd.ro>'
+
+## apt specific
+alias sa='sudo apt-get'
+alias sai='sudo apt-get install'
+alias sau='sudo apt-get update'
+alias saug='sudo apt-get upgrade'
+alias sar='sudo apt-get remove'
+alias sap='sudo apt-get --purge autoremove'
+alias ac='apt-cache'
+
+## admin specific
+alias stf='sudo tail -f'
+
+## play safe
+alias 'rm=rm -i'
+alias 'mv=mv -i'
+alias 'cp=cp -i'
+alias 'mkdir=mkdir -p'
+alias 'dus=du -ms * | sort -n'
+alias 'v=vim'
+alias 'j=jobs -l'
+alias 'tf=tail -f'
+alias 'rh=rehash'
+alias 'q=exit'
+alias 'h=history'
+alias 'e=gedit'
+
+## useful args
+alias -g L='| less'
+alias -g H='| head'
+alias -g S='| sort'
+alias -g T='| tail'
+
+## start webserver
+alias 'http=python -m SimpleHTTPServer ${1}'
