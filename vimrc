@@ -70,10 +70,11 @@ endif
 
 " Keyboard maps
 nmap <space> :
-"nmap <space>mb <leader>mbe
-nmap <silent> <space>cd :lcd %:h<cr>
-nmap <silent> <space>e :vsp
-nmap <silent> <space>q :bd
+nmap <leader>e :vsp 
+nmap <leader>q :bd<CR>
+nmap <leader>cd  :lcd%:p:h<CR>
+nmap <leader>w :w<CR>
+
 " Status line
 let g:Powerline_symbols = 'fancy'
 set statusline=%{SyntasticStatuslineFlag()}%F%m%r%h%w\%=%{fugitive#statusline()}\ [\%l,\%c\]\ A:\%b\ H:\x%B\ P:\%p%%
