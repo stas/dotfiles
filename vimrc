@@ -64,7 +64,7 @@ if has("gui_running")
   set t_Co=256
   colorscheme Tomorrow-Night-Eighties
   set background=dark
-  set listchars=tab:>-,trail:-
+  set listchars=tab:▸·,eol:¶,trail:·
   set list
 endif
 
