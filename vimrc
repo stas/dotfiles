@@ -64,6 +64,7 @@ Bundle 'ervandew/supertab'
 filetype plugin indent on
 
 if has("gui_running")
+  set guioptions-=m
   set guioptions-=T
   set t_Co=256
   colorscheme Tomorrow-Night-Eighties
