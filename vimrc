@@ -24,12 +24,16 @@ set showcmd
 set showmatch
 set showmode
 set smartindent
-set smartcase 
+set smartcase
 set tabstop=2 shiftwidth=2 softtabstop=2
 set whichwrap=b,s,<,>
 set laststatus=2
 set hidden
 set foldmethod=syntax
+set wildmenu
+set ttyfast
+set noeol
+set cursorline
 syntax on
 hi Comment ctermfg=darkgrey
 filetype off
