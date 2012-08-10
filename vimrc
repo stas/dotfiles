@@ -58,7 +58,6 @@ Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'kana/vim-smartinput'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-commentary'
-" Bundle 'Shougo/neocomplcache'
 Bundle 'ervandew/supertab'
 
 filetype plugin indent on
