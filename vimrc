@@ -87,7 +87,7 @@ let g:ctrlp_match_window_reversed = 1
 let g:ctrlp_open_new_file = 3
 let g:ctrlp_use_caching = 0
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\',
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.bzr$\',
   \ }
 
 " SuperTab stuff
