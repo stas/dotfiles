@@ -66,6 +66,7 @@ Bundle 'kana/vim-smartinput'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-commentary'
 Bundle 'Shougo/neocomplcache'
+Bundle 'vim-scripts/Align'
 Bundle 'altercation/vim-colors-solarized'
 
 filetype plugin indent on
