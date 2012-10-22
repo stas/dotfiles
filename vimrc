@@ -105,7 +105,14 @@ imap <right> <nop>
 
 " Status line
 let g:Powerline_symbols = 'fancy'
-set statusline=%{SyntasticStatuslineFlag()}%F%m%r%h%w\%=%{fugitive#statusline()}\ [\%l,\%c\]\ A:\%b\ H:\x%B\ P:\%p%%
+set laststatus=2
+set statusline=%<%f\    " Filename
+set statusline+=%w%h%m%r " Options
+set statusline+=%{SyntasticStatuslineFlag()} " Syntastic
+set statusline+=%{fugitive#statusline()} "  Git Hotness
+set statusline+=\ [%{&ff}/%Y]            " filetype
+set statusline+=\ [%{getcwd()}]          " current dir
+set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 
 " Copy/Cat
 set clipboard=unnamedplus
