@@ -93,6 +93,16 @@ nmap <leader>q :bd<CR>
 nmap <leader>cd  :lcd%:p:h<CR>
 nmap <leader>w :w<CR>
 
+" Disable arrow keys
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
 " Status line
 let g:Powerline_symbols = 'fancy'
 set statusline=%{SyntasticStatuslineFlag()}%F%m%r%h%w\%=%{fugitive#statusline()}\ [\%l,\%c\]\ A:\%b\ H:\x%B\ P:\%p%%
