@@ -1,5 +1,5 @@
 let color = "true"
-set sh=/bin/zsh
+set sh=/bin/bash
 set encoding=utf-8
 set background=dark
 set backspace=indent,eol,start
