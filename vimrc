@@ -65,7 +65,8 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'kana/vim-smartinput'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-commentary'
-Bundle 'ervandew/supertab'
+Bundle 'Shougo/neocomplcache'
+Bundle 'altercation/vim-colors-solarized'
 
 filetype plugin indent on
 
@@ -73,8 +74,14 @@ if has("gui_running")
   set guioptions-=m
   set guioptions-=T
   set t_Co=256
-  colorscheme Tomorrow-Night-Eighties
-  set background=dark
+
+  colorscheme solarized
+  let g:solarized_termcolors=256
+  let g:solarized_termtrans=1
+  let g:solarized_contrast="high"
+  let g:solarized_visibility="high"
+
+  set background=light
   set listchars=tab:▸·,eol:¶,trail:·
   set list
 endif
