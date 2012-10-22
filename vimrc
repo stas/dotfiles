@@ -5,7 +5,7 @@ set background=dark
 set backspace=indent,eol,start
 set expandtab
 set ignorecase
-set incsearch 
+set incsearch
 set matchpairs=(:),{:},[:],<:>
 set nobackup
 set nocompatible
@@ -18,6 +18,7 @@ set nowb
 set noswapfile
 "set paste
 set ruler
+set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 set cc=80
 set scrolloff=5
 set showcmd
@@ -26,10 +27,11 @@ set showmode
 set smartindent
 set smartcase
 set tabstop=2 shiftwidth=2 softtabstop=2
-set whichwrap=b,s,<,>
+set whichwrap=b,s,h,l,<,>,[,]
 set laststatus=2
 set hidden
 set foldmethod=syntax
+set nofoldenable
 set wildmenu
 set ttyfast
 set noeol
@@ -38,13 +40,19 @@ syntax on
 hi Comment ctermfg=darkgrey
 filetype off
 set gfn=Inconsolata\ 11.5
+set shortmess+=filmnrxoOtT
+set viewoptions=folds,options,cursor,unix,slash
+set virtualedit=onemore
+set history=1000
+set spell
+set linespace=0
 
 " Vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage bundles
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 
 " More bundles
@@ -54,7 +62,6 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'pangloss/vim-javascript'
-Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'kana/vim-smartinput'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-commentary'
