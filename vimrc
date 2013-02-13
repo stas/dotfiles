@@ -65,15 +65,21 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'kana/vim-smartinput'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-commentary'
-Bundle 'Shougo/neocomplcache'
 Bundle 'vim-scripts/Align'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'gmarik/sudo-gui.vim'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'Valloric/MatchTagAlways'
 
 filetype plugin indent on
 
 if has("gui_running")
   set guioptions-=m
   set guioptions-=T
+  set guioptions-=r
+  set guioptions-=R
+  set guioptions-=l
+  set guioptions-=L
   set t_Co=256
 
   colorscheme solarized
@@ -82,7 +88,7 @@ if has("gui_running")
   let g:solarized_contrast="high"
   let g:solarized_visibility="high"
 
-  set background=light
+  " set background=light
   set listchars=tab:▸·,eol:¶,trail:·
   set list
 endif
@@ -106,7 +112,6 @@ imap <right> <nop>
 
 " Status line
 let g:Powerline_symbols = 'fancy'
-set laststatus=2
 set statusline=%<%f\    " Filename
 set statusline+=%w%h%m%r " Options
 set statusline+=%{SyntasticStatuslineFlag()} " Syntastic
@@ -133,28 +138,6 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-
-" Neocomplcache
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_auto_delimiter = 1
-let g:neocomplcache_max_list = 15
-let g:neocomplcache_force_overwrite_completefunc = 1
-let g:neocomplcache_disable_auto_complete = 1
-" Define keyword.
-if !exists('g:neocomplcache_keyword_patterns')
-  let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-" Enable heavy omni completion.
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-" Shortcuts
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<C-x>\<TAB>"
 
 " Remove whitespaces on save
 autocmd FileType ruby,python,php,javascript,html,markdown,css autocmd BufWritePre * :%s/\s\+$//e
