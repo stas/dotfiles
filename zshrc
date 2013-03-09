@@ -6,20 +6,17 @@ antigen-lib
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen-bundle git
-antigen-bundle bundler
-antigen-bundle github
-antigen-bundle rake
-antigen-bundle command-not-found
+antigen-bundle ssh-agent
 
 # Syntax highlighting bundle.
 antigen-bundle zsh-users/zsh-syntax-highlighting
 # ZSH port of Fish shell's history search feature.
-antigen-bundle zsh-users/zsh-history-substring-search
+# antigen-bundle zsh-users/zsh-history-substring-search
 
-# Load the theme.
+# # Load the theme.
 antigen-theme gallifrey
 
-# Tell antigen that you're done.
+# # Tell antigen that you're done.
 antigen-apply
 
 # don't write over existing files with >, use >! instead
@@ -27,7 +24,6 @@ setopt NOCLOBBER
 # watch other user login/out
 watch=notme
 
-source "$HOME/.rvm/scripts/rvm"
 export PATH="$HOME/.bin:$PATH"
 
 export EDITOR='vim'
@@ -67,5 +63,6 @@ alias -g H='| head'
 alias -g S='| sort'
 alias -g T='| tail'
 
-## start webserver
-alias 'http=python -m SimpleHTTPServer ${1}'
+## tools
+alias http='python -m SimpleHTTPServer ${1}'
+alias brake='noglob bundle exec rake'
