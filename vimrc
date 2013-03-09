@@ -65,11 +65,13 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'kana/vim-smartinput'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-commentary'
+" Bundle 'tpope/vim-rails'
 Bundle 'vim-scripts/Align'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'gmarik/sudo-gui.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'Valloric/MatchTagAlways'
+Bundle 'airblade/vim-gitgutter'
 
 filetype plugin indent on
 
@@ -112,13 +114,13 @@ imap <right> <nop>
 
 " Status line
 let g:Powerline_symbols = 'fancy'
-set statusline=%<%f\    " Filename
-set statusline+=%w%h%m%r " Options
+set statusline=%<%f\                         " Filename
+set statusline+=%w%h%m%r                     " Options
 set statusline+=%{SyntasticStatuslineFlag()} " Syntastic
-set statusline+=%{fugitive#statusline()} "  Git Hotness
-set statusline+=\ [%{&ff}/%Y]            " filetype
-set statusline+=\ [%{getcwd()}]          " current dir
-set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+set statusline+=%{fugitive#statusline()}     " Git Hotness
+set statusline+=\ [%{&ff}/%Y]                " filetype
+set statusline+=\ [%{getcwd()}]              " current dir
+set statusline+=%=%-14.(%l,%c%V%)\ %p%%      " Right aligned file nav info
 
 " Copy/Cat
 set clipboard=unnamedplus
@@ -138,6 +140,9 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
+" YCM support for comments
+let g:ycm_complete_in_comments_and_strings = 1
 
 " Remove whitespaces on save
 autocmd FileType ruby,python,php,javascript,html,markdown,css autocmd BufWritePre * :%s/\s\+$//e
