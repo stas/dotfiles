@@ -60,18 +60,21 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'kien/ctrlp.vim'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'scrooloose/syntastic'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'pangloss/vim-javascript'
 Bundle 'kana/vim-smartinput'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-commentary'
-" Bundle 'tpope/vim-rails'
+Bundle 'bling/vim-airline'
 Bundle 'vim-scripts/Align'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'gmarik/sudo-gui.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'Valloric/MatchTagAlways'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'tpope/vim-haml'
+Bundle 'slim-template/vim-slim'
+Bundle 'zeis/vim-kolor'
 
 filetype plugin indent on
 
@@ -84,11 +87,7 @@ if has("gui_running")
   set guioptions-=L
   set t_Co=256
 
-  colorscheme solarized
-  let g:solarized_termcolors=256
-  let g:solarized_termtrans=1
-  let g:solarized_contrast="high"
-  let g:solarized_visibility="high"
+  colorscheme kolor
 
   " set background=light
   set listchars=tab:▸·,eol:¶,trail:·
@@ -113,24 +112,22 @@ imap <left> <nop>
 imap <right> <nop>
 
 " Status line
-let g:Powerline_symbols = 'fancy'
-set statusline=%<%f\                         " Filename
-set statusline+=%w%h%m%r                     " Options
-set statusline+=%{SyntasticStatuslineFlag()} " Syntastic
-set statusline+=%{fugitive#statusline()}     " Git Hotness
-set statusline+=\ [%{&ff}/%Y]                " filetype
-set statusline+=\ [%{getcwd()}]              " current dir
-set statusline+=%=%-14.(%l,%c%V%)\ %p%%      " Right aligned file nav info
+let g:airline_left_sep = '⮀ '
+let g:airline_right_sep = '⮂'
+let g:airline_linecolumn_prefix = '⭡ '
+let g:airline_fugitive_prefix = ' ⭠ '
 
 " Copy/Cat
 set clipboard=unnamedplus
 
 " CtrlP Stuff
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window_reversed = 1
 let g:ctrlp_open_new_file = 3
 let g:ctrlp_use_caching = 0
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.bzr$\',
+  \ 'dir':  '\v[\/]\.(git|hg|svn|bzr)$|coverage|tmp\/cache',
   \ }
 
 " Enable omni completion.
