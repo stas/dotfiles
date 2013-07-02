@@ -24,7 +24,7 @@ setopt NOCLOBBER
 # watch other user login/out
 watch=notme
 
-export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/.bin:$HOME/.bin/android-sdk/platform-tools:$PATH"
 
 export EDITOR='vim'
 export VISUAL='vim'
@@ -66,3 +66,4 @@ alias -g T='| tail'
 ## tools
 alias http='python -m SimpleHTTPServer ${1}'
 alias brake='noglob bundle exec rake'
+alias be='noglob bundle exec'
