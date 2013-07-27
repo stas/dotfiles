@@ -1,0 +1,50 @@
+[user]
+  mail = stas@net.utcluj.ro
+  name = Stas SUȘCOV
+
+[alias]
+  co = checkout
+  ci = commit -a
+  st = status -a
+  br = branch
+  g = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  sh = !git-sh
+
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+  sh = auto
+  ui = auto
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[push]
+  default = current
+
+[apply]
+  whitespace = nowarn
+
+[merge]
+  tool = vimdiff
+
+[core]
+  autocrlf = input
+  safecrlf = warn
+
+[web]
+  browser = chromium
