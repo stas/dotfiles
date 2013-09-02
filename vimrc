@@ -74,7 +74,6 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-haml'
 Bundle 'slim-template/vim-slim'
-Bundle 'zeis/vim-kolor'
 
 filetype plugin indent on
 
@@ -87,9 +86,13 @@ if has("gui_running")
   set guioptions-=L
   set t_Co=256
 
-  colorscheme kolor
+  colorscheme solarized
+  let g:solarized_termcolors=256
+  let g:solarized_termtrans=1
+  let g:solarized_contrast="high"
+  let g:solarized_visibility="high"
 
-  " set background=light
+  set background=light
   set listchars=tab:▸·,eol:¶,trail:·
   set list
 endif
