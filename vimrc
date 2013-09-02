@@ -170,4 +170,4 @@ autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 let g:ycm_complete_in_comments_and_strings = 1
 
 " Remove whitespaces on save
-autocmd FileType ruby,python,php,javascript,html,markdown,css autocmd BufWritePre * :%s/\s\+$//e
+autocmd FileType ruby,python,php,javascript,html,markdown,css,slim autocmd BufWritePre * :%s/\s\+$//e
