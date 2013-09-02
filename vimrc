@@ -64,7 +64,7 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'kana/vim-smartinput'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-commentary'
-Bundle 'bling/vim-airline'
+Bundle 'itchyny/lightline.vim'
 Bundle 'vim-scripts/Align'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'gmarik/sudo-gui.vim'
@@ -124,10 +124,26 @@ let g:netrw_silent        = 1
 let g:netrw_use_errorwindow = 0
 
 " Status line
-let g:airline_left_sep = '⮀ '
-let g:airline_right_sep = '⮂'
-let g:airline_linecolumn_prefix = '⭡ '
-let g:airline_fugitive_prefix = ' ⭠ '
+let g:lightline = {
+  \ 'colorscheme': 'solarized',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+  \ },
+  \ 'component': {
+  \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
+  \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+  \   'fugitive': '⭠ %{exists("*fugitive#head")?fugitive#head():""}',
+  \   'lineinfo': '⭡ %3l:%-2v'
+  \ },
+  \ 'component_visible_condition': {
+  \   'readonly': '(&filetype!="help"&& &readonly)',
+  \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+  \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+  \ },
+  \ 'separator': { 'left': '⮀', 'right': '⮂' },
+  \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+  \ }
 
 " Copy/Cat
 set clipboard=unnamedplus
