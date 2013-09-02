@@ -114,6 +114,15 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
+" netrw
+let g:netrw_altv          = 1
+let g:netrw_fastbrowse    = 1
+let g:netrw_keepdir       = 0
+let g:netrw_liststyle     = 0
+let g:netrw_retmap        = 1
+let g:netrw_silent        = 1
+let g:netrw_use_errorwindow = 0
+
 " Status line
 let g:airline_left_sep = '⮀ '
 let g:airline_right_sep = '⮂'
