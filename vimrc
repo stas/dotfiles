@@ -39,7 +39,7 @@ set cursorline
 syntax on
 hi Comment ctermfg=darkgrey
 filetype off
-set gfn=Inconsolata\ 11.5
+set gfn=MonoOne\ 11.5
 set shortmess+=filmnrxoOtT
 set viewoptions=folds,options,cursor,unix,slash
 set virtualedit=onemore
