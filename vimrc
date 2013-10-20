@@ -163,6 +163,9 @@ let g:ctrlp_user_command = [
   \ 'find %s -type f'
   \ ]
 
+" GitGutter
+let g:gitgutter_on_bufenter = 0
+
 " Enable omni completion.
 " set ofu=syntaxcomplete#Complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -173,6 +176,7 @@ autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 " YCM support for comments
 let g:ycm_complete_in_comments_and_strings = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 " Remove whitespaces on save
 autocmd FileType ruby,python,php,javascript,html,markdown,css,slim autocmd BufWritePre * :%s/\s\+$//e
