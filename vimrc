@@ -74,6 +74,7 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-haml'
 Bundle 'slim-template/vim-slim'
+Bundle 'Yggdroot/indentLine'
 
 filetype plugin indent on
 
