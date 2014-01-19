@@ -70,11 +70,12 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'gmarik/sudo-gui.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'Valloric/MatchTagAlways'
-Bundle 'airblade/vim-gitgutter'
+Bundle 'mhinz/vim-signify'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-haml'
 Bundle 'slim-template/vim-slim'
 Bundle 'Yggdroot/indentLine'
+Bundle 'tpope/vim-vinegar'
 
 filetype plugin indent on
 
@@ -92,10 +93,12 @@ if has("gui_running")
   let g:solarized_termtrans=1
   let g:solarized_contrast="high"
   let g:solarized_visibility="high"
+  " set background=light
 
-  set background=light
   set listchars=tab:▸·,eol:¶,trail:·
   set list
+else
+  let base16colorspace=256
 endif
 
 " Keyboard maps
@@ -163,8 +166,9 @@ let g:ctrlp_user_command = [
   \ 'find %s -type f'
   \ ]
 
-" GitGutter
-let g:gitgutter_on_bufenter = 0
+" Signify
+let g:signify_vcs_list = [ 'git' ]
+let g:signify_sign_color_inherit_from_linenr = 1
 
 " Enable omni completion.
 " set ofu=syntaxcomplete#Complete
