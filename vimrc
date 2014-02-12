@@ -77,6 +77,8 @@ Bundle 'slim-template/vim-slim'
 Bundle 'Yggdroot/indentLine'
 Bundle 'tpope/vim-vinegar'
 Bundle 'justincampbell/vim-eighties'
+Bundle 'Glench/Vim-Jinja2-Syntax'
+Bundle 'klen/python-mode'
 
 filetype plugin indent on
 
@@ -175,17 +177,27 @@ let g:signify_sign_color_inherit_from_linenr = 1
 let g:eighties_enabled = 1
 let g:eighties_minimum_width = 80
 
-" Enable omni completion.
-" set ofu=syntaxcomplete#Complete
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-
 " YCM support for comments
 let g:ycm_complete_in_comments_and_strings = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
+
+" Python Mode
+let g:pymode_folding = 0
+let g:pymode_motion = 0
+let g:pymode_lint_cwindow = 0
+let g:pymode_rope = 0
+let g:pymode_rope_completion = 0
+
+" Remove any preview windows
+set completeopt-=preview
+
+" Enable omni completion.
+set ofu=syntaxcomplete#Complete
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 " Remove whitespaces on save
 autocmd FileType ruby,python,php,javascript,html,markdown,css,slim autocmd BufWritePre * :%s/\s\+$//e
