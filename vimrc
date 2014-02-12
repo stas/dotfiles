@@ -76,6 +76,7 @@ Bundle 'tpope/vim-haml'
 Bundle 'slim-template/vim-slim'
 Bundle 'Yggdroot/indentLine'
 Bundle 'tpope/vim-vinegar'
+Bundle 'justincampbell/vim-eighties'
 
 filetype plugin indent on
 
@@ -169,6 +170,10 @@ let g:ctrlp_user_command = [
 " Signify
 let g:signify_vcs_list = [ 'git' ]
 let g:signify_sign_color_inherit_from_linenr = 1
+
+" Eighties
+let g:eighties_enabled = 1
+let g:eighties_minimum_width = 80
 
 " Enable omni completion.
 " set ofu=syntaxcomplete#Complete
