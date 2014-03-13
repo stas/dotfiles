@@ -134,6 +134,7 @@ let g:netrw_liststyle     = 0
 let g:netrw_retmap        = 1
 let g:netrw_silent        = 1
 let g:netrw_use_errorwindow = 0
+let netrw_list_hide = '^\(\..\{-}\.sw.\|.\{-}\.pyc\)$'
 
 " Status line
 let g:lightline = {
@@ -160,7 +161,7 @@ let g:lightline = {
 set clipboard=unnamedplus
 
 " CtrlP Stuff
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window_reversed = 1
 let g:ctrlp_open_new_file = 3
