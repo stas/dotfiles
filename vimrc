@@ -77,8 +77,10 @@ Bundle 'slim-template/vim-slim'
 Bundle 'Yggdroot/indentLine'
 Bundle 'tpope/vim-vinegar'
 Bundle 'justincampbell/vim-eighties'
+Bundle 'chriskempson/base16-vim'
 Bundle 'Glench/Vim-Jinja2-Syntax'
 Bundle 'klen/python-mode'
+Bundle 'jordwalke/flatlandia'
 
 filetype plugin indent on
 
@@ -91,12 +93,15 @@ if has("gui_running")
   set guioptions-=L
   set t_Co=256
 
-  colorscheme solarized
-  let g:solarized_termcolors=256
-  let g:solarized_termtrans=1
-  let g:solarized_contrast="high"
-  let g:solarized_visibility="high"
+  " colorscheme solarized
+  " let g:solarized_termcolors=256
+  " let g:solarized_termtrans=1
+  " let g:solarized_contrast="high"
+  " let g:solarized_visibility="high"
   " set background=light
+
+  " colorscheme base16-ocean
+  colorscheme flatlandia
 
   set listchars=tab:▸·,eol:¶,trail:·
   set list
@@ -132,7 +137,6 @@ let g:netrw_use_errorwindow = 0
 
 " Status line
 let g:lightline = {
-  \ 'colorscheme': 'solarized',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
