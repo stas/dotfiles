@@ -206,3 +206,9 @@ autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 " Remove whitespaces on save
 autocmd FileType ruby,python,php,javascript,html,markdown,css,slim autocmd BufWritePre * :%s/\s\+$//e
+
+" More file types
+autocmd BufNewFile,BufRead *.sls set filetype=yaml
+autocmd BufNewFile,BufRead *.es6 set filetype=javascript
+autocmd BufNewFile,BufRead *.hbs set filetype=jinja
+autocmd BufNewFile,BufRead *.md set filetype=markdown
