@@ -3,7 +3,7 @@ set sh=/bin/bash
 set encoding=utf-8
 set background=dark
 set backspace=indent,eol,start
-set expandtab
+set expandtab smarttab
 set ignorecase
 set incsearch
 set matchpairs=(:),{:},[:],<:>
@@ -36,16 +36,23 @@ set wildmenu
 set ttyfast
 set noeol
 set cursorline
-syntax on
-hi Comment ctermfg=darkgrey
-filetype off
-set gfn=MonoOne\ 11.5
+set nojoinspaces
+set autoread
+set gfn=MonoOne\ 12
 set shortmess+=filmnrxoOtT
 set viewoptions=folds,options,cursor,unix,slash
-set virtualedit=onemore
+set virtualedit=block
 set history=1000
 set spell
 set linespace=0
+set shortmess=aI
+set shortmess+=T
+set lazyredraw
+set whichwrap=b,s
+
+syntax on
+hi Comment ctermfg=darkgrey
+filetype off
 
 " Vundle
 set rtp+=~/.vim/bundle/vundle/
@@ -58,9 +65,7 @@ Bundle 'gmarik/vundle'
 " More bundles
 Bundle 'tpope/vim-fugitive'
 Bundle 'kien/ctrlp.vim'
-Bundle 'vim-ruby/vim-ruby'
 Bundle 'scrooloose/syntastic'
-Bundle 'pangloss/vim-javascript'
 Bundle 'Raimondi/delimitMate'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-commentary'
@@ -71,16 +76,23 @@ Bundle 'gmarik/sudo-gui.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'Valloric/MatchTagAlways'
 Bundle 'mhinz/vim-signify'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'tpope/vim-haml'
-Bundle 'slim-template/vim-slim'
 Bundle 'Yggdroot/indentLine'
 Bundle 'tpope/vim-vinegar'
-Bundle 'justincampbell/vim-eighties'
-Bundle 'chriskempson/base16-vim'
-Bundle 'Glench/Vim-Jinja2-Syntax'
 Bundle 'klen/python-mode'
-Bundle 'jordwalke/flatlandia'
+Bundle 'roman/golden-ratio'
+
+Bundle 'tpope/vim-markdown'
+Bundle 'pangloss/vim-javascript'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'Glench/Vim-Jinja2-Syntax'
+Bundle 'tpope/vim-haml'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'slim-template/vim-slim'
+Bundle 'groenewege/vim-less'
+Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'othree/html5.vim'
+Bundle 'darthdeus/vim-emblem'
+Bundle 'wting/rust.vim'
 
 filetype plugin indent on
 
@@ -93,20 +105,15 @@ if has("gui_running")
   set guioptions-=L
   set t_Co=256
 
-  " colorscheme solarized
-  " let g:solarized_termcolors=256
-  " let g:solarized_termtrans=1
-  " let g:solarized_contrast="high"
-  " let g:solarized_visibility="high"
-  " set background=light
-
-  " colorscheme base16-ocean
-  colorscheme flatlandia
+  colorscheme solarized
+  let g:solarized_termcolors=256
+  let g:solarized_termtrans=1
+  let g:solarized_contrast="high"
+  let g:solarized_visibility="high"
+  set background=light
 
   set listchars=tab:▸·,eol:¶,trail:·
   set list
-else
-  let base16colorspace=256
 endif
 
 " Keyboard maps
@@ -193,6 +200,12 @@ let g:pymode_lint_cwindow = 0
 let g:pymode_rope = 0
 let g:pymode_rope_completion = 0
 
+" HTML5
+let g:html5_event_handler_attributes_complete = 0
+let g:html5_rdfa_attributes_complete = 0
+let g:html5_microdata_attributes_complete = 0
+let g:html5_aria_attributes_complete = 0
+
 " Remove any preview windows
 set completeopt-=preview
 
@@ -210,5 +223,4 @@ autocmd FileType ruby,python,php,javascript,html,markdown,css,slim autocmd BufWr
 " More file types
 autocmd BufNewFile,BufRead *.sls set filetype=yaml
 autocmd BufNewFile,BufRead *.es6 set filetype=javascript
-autocmd BufNewFile,BufRead *.hbs set filetype=jinja
 autocmd BufNewFile,BufRead *.md set filetype=markdown

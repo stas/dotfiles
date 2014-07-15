@@ -2,7 +2,7 @@
 source "$HOME/.zsh/antigen/antigen.zsh"
 
 # Load the oh-my-zsh's library.
-antigen-lib
+antigen-use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen-bundle git
@@ -24,7 +24,21 @@ setopt NOCLOBBER
 # watch other user login/out
 watch=notme
 
-export PATH="$HOME/.bin:$HOME/.bin/android-sdk/platform-tools:$PATH"
+# Include home dot-bin to $PATH
+export PATH="$HOME/.bin:$PATH"
+
+# Load Android SDK
+export PATH="$HOME/.bin/android-sdk/platform-tools:$PATH"
+
+# Load rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init - zsh)"
+
+# Set python startup script
+export PYTHONSTARTUP="$HOME/.pystartup"
+
+# Load nvm
+source "$HOME/.nvm/nvm.sh"
 
 export EDITOR='vim'
 export VISUAL='vim'
@@ -65,5 +79,6 @@ alias -g T='| tail'
 
 ## tools
 alias http='python -m SimpleHTTPServer ${1}'
+alias jsonify='python -m json.tool'
 alias brake='noglob bundle exec rake'
 alias be='noglob bundle exec'
