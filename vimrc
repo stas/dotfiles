@@ -73,7 +73,7 @@ Bundle 'itchyny/lightline.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'gmarik/sudo-gui.vim'
-Bundle 'Valloric/YouCompleteMe'
+Bundle 'Shougo/neocomplete.vim'
 Bundle 'Valloric/MatchTagAlways'
 Bundle 'mhinz/vim-signify'
 Bundle 'Yggdroot/indentLine'
@@ -189,9 +189,22 @@ let g:signify_sign_color_inherit_from_linenr = 1
 let g:eighties_enabled = 1
 let g:eighties_minimum_width = 80
 
-" YCM support for comments
-let g:ycm_complete_in_comments_and_strings = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
+" neocomplete
+let g:acp_enableAtStartup = 0
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_camel_case = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#max_list = 5
+let g:neocomplete#auto_completion_start_length = 3
+let g:neocomplete#force_overwrite_completefunc = 1
+let g:neocomplcache_enable_auto_select = 0
+if !exists('g:neocomplete#keyword_patterns')
+  let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<TAB>"
 
 " Python Mode
 let g:pymode_folding = 0
