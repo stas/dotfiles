@@ -1,7 +1,7 @@
 let color = "true"
 set sh=/bin/bash
 set encoding=utf-8
-set background=dark
+set background=light
 set backspace=indent,eol,start
 set expandtab smarttab
 set ignorecase
@@ -43,7 +43,7 @@ set shortmess+=filmnrxoOtT
 set viewoptions=folds,options,cursor,unix,slash
 set virtualedit=block
 set history=1000
-set spell
+" set spell
 set linespace=0
 set shortmess=aI
 set shortmess+=T
@@ -82,17 +82,14 @@ Bundle 'klen/python-mode'
 Bundle 'roman/golden-ratio'
 
 Bundle 'tpope/vim-markdown'
+Bundle 'mitsuhiko/vim-rst'
 Bundle 'pangloss/vim-javascript'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'Glench/Vim-Jinja2-Syntax'
-Bundle 'tpope/vim-haml'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'slim-template/vim-slim'
-Bundle 'groenewege/vim-less'
-Bundle 'mustache/vim-mustache-handlebars'
-Bundle 'othree/html5.vim'
+" Bundle 'slim-template/vim-slim'
 Bundle 'darthdeus/vim-emblem'
-Bundle 'wting/rust.vim'
+" Bundle 'wting/rust.vim'
+" Bundle 'tkztmk/vim-vala'
 
 filetype plugin indent on
 
@@ -185,10 +182,6 @@ let g:ctrlp_user_command = [
 let g:signify_vcs_list = [ 'git' ]
 let g:signify_sign_color_inherit_from_linenr = 1
 
-" Eighties
-let g:eighties_enabled = 1
-let g:eighties_minimum_width = 80
-
 " neocomplete
 let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
@@ -213,12 +206,6 @@ let g:pymode_lint_cwindow = 0
 let g:pymode_rope = 0
 let g:pymode_rope_completion = 0
 
-" HTML5
-let g:html5_event_handler_attributes_complete = 0
-let g:html5_rdfa_attributes_complete = 0
-let g:html5_microdata_attributes_complete = 0
-let g:html5_aria_attributes_complete = 0
-
 " Remove any preview windows
 set completeopt-=preview
 
@@ -227,7 +214,7 @@ set ofu=syntaxcomplete#Complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 " Remove whitespaces on save
@@ -237,3 +224,4 @@ autocmd FileType ruby,python,php,javascript,html,markdown,css,slim autocmd BufWr
 autocmd BufNewFile,BufRead *.sls set filetype=yaml
 autocmd BufNewFile,BufRead *.es6 set filetype=javascript
 autocmd BufNewFile,BufRead *.md set filetype=markdown
+autocmd BufNewFile,BufRead *.embl set filetype=emblem
