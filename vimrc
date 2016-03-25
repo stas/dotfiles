@@ -1,97 +1,59 @@
-let color = "true"
-set sh=/bin/bash
-set encoding=utf-8
-set background=light
-set backspace=indent,eol,start
-set expandtab smarttab
-set ignorecase
-set incsearch
-set matchpairs=(:),{:},[:],<:>
-set nobackup
-set nocompatible
-set nohlsearch
-set nostartofline
-set nowritebackup
-set number
-set nobackup
-set nowb
-set noswapfile
-"set paste
+" Vim Plug
+call plug#begin('~/.vim/plugged')
+
+" Plugins
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
+Plug 'godlygeek/tabular'
+Plug 'mhinz/vim-startify'
+Plug 'roman/golden-ratio'
+Plug 'kien/ctrlp.vim'
+Plug 'mhartington/oceanic-next'
+Plug 'altercation/vim-colors-solarized'
+Plug 'Raimondi/delimitMate'
+Plug 'mhinz/vim-signify'
+Plug 'Yggdroot/indentLine'
+Plug 'mileszs/ack.vim'
+Plug 'gmarik/sudo-gui.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'benekastah/neomake'
+Plug 'ajh17/VimCompletesMe'
+Plug 'sheerun/vim-polyglot'
+Plug 'klen/python-mode'
+
+call plug#end()
+
+" Misc
+set nu
 set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 set cc=80
 set scrolloff=5
-set showcmd
-set showmatch
-set showmode
-set smartindent
-set smartcase
-set tabstop=2 shiftwidth=2 softtabstop=2
-set whichwrap=b,s,h,l,<,>,[,]
-set laststatus=2
-set hidden
-set foldmethod=syntax
-set nofoldenable
-set wildmenu
-set ttyfast
 set noeol
 set cursorline
-set nojoinspaces
-set autoread
-set gfn=MonoOne\ 12
-set shortmess+=filmnrxoOtT
-set viewoptions=folds,options,cursor,unix,slash
-set virtualedit=block
-set history=1000
-" set spell
-set linespace=0
-set shortmess=aI
-set shortmess+=T
-set lazyredraw
-set whichwrap=b,s
+set noswapfile
+set nobackup
+set expandtab
 
-syntax on
-hi Comment ctermfg=darkgrey
-filetype off
+" Copy/Cat
+set clipboard=unnamedplus
 
-" Vundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" Remove any preview windows
+set completeopt-=preview
 
-" let Vundle manage bundles
-" required!
-Bundle 'gmarik/vundle'
+" Whitespaces
+set listchars=tab:▸·,eol:¶,trail:·
+set list
 
-" More bundles
-Bundle 'tpope/vim-fugitive'
-Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'Raimondi/delimitMate'
-Bundle 'mileszs/ack.vim'
-Bundle 'tpope/vim-commentary'
-Bundle 'itchyny/lightline.vim'
-Bundle 'godlygeek/tabular'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'gmarik/sudo-gui.vim'
-Bundle 'Shougo/neocomplete.vim'
-Bundle 'Valloric/MatchTagAlways'
-Bundle 'mhinz/vim-signify'
-Bundle 'Yggdroot/indentLine'
-Bundle 'tpope/vim-vinegar'
-Bundle 'klen/python-mode'
-Bundle 'roman/golden-ratio'
-
-Bundle 'tpope/vim-markdown'
-Bundle 'mitsuhiko/vim-rst'
-Bundle 'pangloss/vim-javascript'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'kchmck/vim-coffee-script'
-" Bundle 'slim-template/vim-slim'
-Bundle 'darthdeus/vim-emblem'
-" Bundle 'wting/rust.vim'
-" Bundle 'tkztmk/vim-vala'
-
-filetype plugin indent on
+" Colors
+let color="true"
+set t_Co=256
+set gfn=MonoOne\ 14
+colorscheme solarized
+set background=light
 
 if has("gui_running")
   set guioptions-=m
@@ -100,24 +62,15 @@ if has("gui_running")
   set guioptions-=R
   set guioptions-=l
   set guioptions-=L
-  set t_Co=256
-
-  colorscheme solarized
-  let g:solarized_termcolors=256
-  let g:solarized_termtrans=1
-  let g:solarized_contrast="high"
-  let g:solarized_visibility="high"
-  set background=light
-
-  set listchars=tab:▸·,eol:¶,trail:·
-  set list
+else
+  colorscheme OceanicNext
+  set background=dark
 endif
 
 " Keyboard maps
 nmap <space> :
 nmap <leader>e :vsp
 nmap <leader>q :bd<CR>
-nmap <leader>cd  :lcd%:p:h<CR>
 nmap <leader>w :w<CR>
 
 " Disable arrow keys
@@ -131,14 +84,26 @@ imap <left> <nop>
 imap <right> <nop>
 
 " netrw
-let g:netrw_altv          = 1
-let g:netrw_fastbrowse    = 1
-let g:netrw_keepdir       = 0
-let g:netrw_liststyle     = 0
-let g:netrw_retmap        = 1
-let g:netrw_silent        = 1
+let g:netrw_altv            = 1
+let g:netrw_fastbrowse      = 1
+let g:netrw_keepdir         = 0
+let g:netrw_liststyle       = 0
+let g:netrw_retmap          = 1
+let g:netrw_silent          = 1
 let g:netrw_use_errorwindow = 0
-let netrw_list_hide = '^\(\..\{-}\.sw.\|.\{-}\.pyc\)$'
+let netrw_list_hide         = '^\(\..\{-}\.sw.\|.\{-}\.pyc\)$'
+
+" Files
+autocmd! BufWritePost * Neomake
+" Remove whitespaces on save
+autocmd FileType ruby,python,php,javascript,html,markdown,css,slim autocmd BufWritePre * :%s/\s\+$//e
+" More file types
+autocmd BufNewFile,BufRead *.sls set filetype=yaml
+autocmd BufNewFile,BufRead *.embl set filetype=emblem
+" Enable Spell Checking for markdown files
+autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.markdown setlocal spell
+autocmd BufRead,BufNewFile *.rst setlocal spell
 
 " Status line
 let g:lightline = {
@@ -161,9 +126,6 @@ let g:lightline = {
   \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
   \ }
 
-" Copy/Cat
-set clipboard=unnamedplus
-
 " CtrlP Stuff
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
 let g:ctrlp_working_path_mode = 'ra'
@@ -182,23 +144,6 @@ let g:ctrlp_user_command = [
 let g:signify_vcs_list = [ 'git' ]
 let g:signify_sign_color_inherit_from_linenr = 1
 
-" neocomplete
-let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_camel_case = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#enable_auto_select = 1
-let g:neocomplete#max_list = 5
-let g:neocomplete#auto_completion_start_length = 3
-let g:neocomplete#force_overwrite_completefunc = 1
-let g:neocomplcache_enable_auto_select = 0
-if !exists('g:neocomplete#keyword_patterns')
-  let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<TAB>"
-
 " Python Mode
 let g:pymode_folding = 0
 let g:pymode_motion = 0
@@ -206,22 +151,6 @@ let g:pymode_lint_cwindow = 0
 let g:pymode_rope = 0
 let g:pymode_rope_completion = 0
 
-" Remove any preview windows
-set completeopt-=preview
-
-" Enable omni completion.
-set ofu=syntaxcomplete#Complete
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-
-" Remove whitespaces on save
-autocmd FileType ruby,python,php,javascript,html,markdown,css,slim autocmd BufWritePre * :%s/\s\+$//e
-
-" More file types
-autocmd BufNewFile,BufRead *.sls set filetype=yaml
-autocmd BufNewFile,BufRead *.es6 set filetype=javascript
-autocmd BufNewFile,BufRead *.md set filetype=markdown
-autocmd BufNewFile,BufRead *.embl set filetype=emblem
+" Commentary
+xmap \\  <Plug>Commentary<CR>
+nmap \\  <CR><Plug>Commentary
