@@ -20,7 +20,7 @@ Plug 'mileszs/ack.vim'
 Plug 'gmarik/sudo-gui.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'benekastah/neomake'
-Plug 'ajh17/VimCompletesMe'
+Plug 'ervandew/supertab'
 Plug 'sheerun/vim-polyglot'
 Plug 'klen/python-mode'
 
@@ -51,8 +51,7 @@ set list
 " Colors
 let color="true"
 set t_Co=256
-set gfn=MonoOne\ 14
-colorscheme solarized
+set gfn=Mononoki\ 14
 set background=light
 
 if has("gui_running")
@@ -62,8 +61,8 @@ if has("gui_running")
   set guioptions-=R
   set guioptions-=l
   set guioptions-=L
+  colorscheme solarized
 else
-  colorscheme OceanicNext
   set background=dark
 endif
 
@@ -112,18 +111,18 @@ let g:lightline = {
   \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
   \ },
   \ 'component': {
-  \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
+  \   'readonly': '%{&filetype=="help"?"":&readonly?"":""}',
   \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-  \   'fugitive': '⭠ %{exists("*fugitive#head")?fugitive#head():""}',
-  \   'lineinfo': '⭡ %3l:%-2v'
+  \   'fugitive': ' %{exists("*fugitive#head")?fugitive#head():""}',
+  \   'lineinfo': ' %3l:%-2v'
   \ },
   \ 'component_visible_condition': {
   \   'readonly': '(&filetype!="help"&& &readonly)',
   \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
   \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
   \ },
-  \ 'separator': { 'left': '⮀', 'right': '⮂' },
-  \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+  \ 'separator': { 'left': '', 'right': '' },
+  \ 'subseparator': { 'left': '', 'right': '' }
   \ }
 
 " CtrlP Stuff
@@ -139,6 +138,10 @@ let g:ctrlp_user_command = [
   \ '.git', 'cd %s && git ls-files . -co --exclude-standard',
   \ 'find %s -type f'
   \ ]
+
+" SuperTab
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabCrMapping = 1
 
 " Signify
 let g:signify_vcs_list = [ 'git' ]
