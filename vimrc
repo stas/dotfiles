@@ -23,6 +23,8 @@ Plug 'benekastah/neomake'
 Plug 'ervandew/supertab'
 Plug 'sheerun/vim-polyglot'
 Plug 'klen/python-mode'
+Plug 'vim-ruby/vim-ruby'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -36,7 +38,10 @@ set noeol
 set cursorline
 set noswapfile
 set nobackup
+
 set expandtab
+set autoindent
+set tabstop=2 shiftwidth=2 softtabstop=2
 
 " Copy/Cat
 set clipboard=unnamedplus
@@ -52,6 +57,7 @@ set list
 let color="true"
 set t_Co=256
 set gfn=Mononoki\ 14
+" colorscheme solarized
 set background=light
 
 if has("gui_running")
@@ -61,7 +67,7 @@ if has("gui_running")
   set guioptions-=R
   set guioptions-=l
   set guioptions-=L
-  colorscheme solarized
+  colorscheme gruvbox
 else
   set background=dark
 endif
@@ -95,7 +101,7 @@ let netrw_list_hide         = '^\(\..\{-}\.sw.\|.\{-}\.pyc\)$'
 " Files
 autocmd! BufWritePost * Neomake
 " Remove whitespaces on save
-autocmd FileType ruby,python,php,javascript,html,markdown,css,slim autocmd BufWritePre * :%s/\s\+$//e
+autocmd FileType * autocmd BufWritePre * :%s/\s\+$//e
 " More file types
 autocmd BufNewFile,BufRead *.sls set filetype=yaml
 autocmd BufNewFile,BufRead *.embl set filetype=emblem
