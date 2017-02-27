@@ -1,23 +1,28 @@
-# Get antigen: https://github.com/zsh-users/antigen
-source "$HOME/.zsh/antigen/antigen.zsh"
+# Installation:
+#   git clone https://github.com/zplug/zplug ~/.zplug
 
-# Load the oh-my-zsh's library.
-antigen-use oh-my-zsh
+source ~/.zplug/init.zsh
 
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen-bundle git
-antigen-bundle ssh-agent
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
-# Syntax highlighting bundle.
-antigen-bundle zsh-users/zsh-syntax-highlighting
-# ZSH port of Fish shell's history search feature.
-# antigen-bundle zsh-users/zsh-history-substring-search
+zplug "lib/completion", from:oh-my-zsh
+zplug "lib/history", from:oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/ssh-agent", from:oh-my-zsh
 
-# # Load the theme.
-antigen-theme gallifrey
+zplug "themes/gallifrey", from:oh-my-zsh, as:theme
 
-# # Tell antigen that you're done.
-antigen-apply
+# # Install plugins if there are plugins that have not been installed
+# if ! zplug check --verbose; then
+#     printf "Install? [y/N]: "
+#     if read -q; then
+#         echo; zplug install
+#     fi
+# fi
+
+# Then, source plugins and add commands to $PATH
+zplug load #--verbose
 
 # don't write over existing files with >, use >! instead
 setopt NOCLOBBER
@@ -27,24 +32,14 @@ watch=notme
 # Include home dot-bin to $PATH
 export PATH="$HOME/.bin:$PATH"
 
-# Load Android SDK
-export PATH="$HOME/.bin/android-sdk/platform-tools:$PATH"
-
-# Load rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init - zsh)"
-
-# Set python startup script
-export PYTHONSTARTUP="$HOME/.pystartup"
-
-# Load nvm
-source "$HOME/.nvm/nvm.sh"
+# Version manager
+. $HOME/.asdf/asdf.sh
 
 export EDITOR='vim'
 export VISUAL='vim'
 export EMAIL='Stas Sușcov <stas@nerd.ro>'
 
-## apt specific
+## Aliases
 alias sa='sudo apt-get'
 alias sai='sudo apt-get install'
 alias sau='sudo apt-get update'
@@ -52,11 +47,8 @@ alias saug='sudo apt-get upgrade'
 alias sar='sudo apt-get remove'
 alias sap='sudo apt-get --purge autoremove'
 alias ac='apt-cache'
-
-## admin specific
 alias stf='sudo tail -f'
-
-## play safe
+alias 'tf=tail -f'
 alias 'rm=rm -i'
 alias 'mv=mv -i'
 alias 'cp=cp -i'
@@ -65,20 +57,11 @@ alias 'dus=du -ms * | sort -n'
 alias 'v=vim'
 alias 'gv=gvim .'
 alias 'j=jobs -l'
-alias 'tf=tail -f'
 alias 'rh=rehash'
 alias 'q=exit'
 alias 'h=history'
-alias 'e=gedit'
+alias 'e=gvim'
 
-## useful args
-alias -g L='| less'
-alias -g H='| head'
-alias -g S='| sort'
-alias -g T='| tail'
-
-## tools
+## Tools
 alias http='python -m SimpleHTTPServer ${1}'
 alias jsonify='python -m json.tool'
-alias brake='noglob bundle exec rake'
-alias be='noglob bundle exec'
