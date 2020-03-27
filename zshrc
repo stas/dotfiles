@@ -1,45 +1,35 @@
 # Installation:
-#   git clone https://github.com/zplug/zplug ~/.zplug
+#   git clone https://github.com/zdharma/zinit.git ~/.zinit
 
-source ~/.zplug/init.zsh
+source ~/.zinit/zinit.zsh
 
-zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-
-zplug "lib/completion", from:oh-my-zsh
-zplug "lib/history", from:oh-my-zsh
-zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/ssh-agent", from:oh-my-zsh
-
-zplug "themes/gallifrey", from:oh-my-zsh, as:theme
-
-# # Install plugins if there are plugins that have not been installed
-# if ! zplug check --verbose; then
-#     printf "Install? [y/N]: "
-#     if read -q; then
-#         echo; zplug install
-#     fi
-# fi
-
-# Then, source plugins and add commands to $PATH
-zplug load #--verbose
-
+# prompt expressions
+setopt promptsubst
 # don't write over existing files with >, use >! instead
 setopt NOCLOBBER
 # watch other user login/out
 watch=notme
+# load colors
+autoload colors; colors
+
+zinit light zdharma/fast-syntax-highlighting
+
+zinit snippet OMZ::lib/completion.zsh
+zinit snippet OMZ::lib/history.zsh
+zinit snippet OMZ::lib/git.zsh
+zinit snippet OMZ::plugins/git/git.plugin.zsh
+zinit snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
+zinit snippet OMZ::themes/gallifrey.zsh-theme
 
 # Include home dot-bin to $PATH
 export PATH="$HOME/.bin:$PATH"
-
-# Version manager
-. $HOME/.asdf/asdf.sh
 
 export EDITOR='vim'
 export VISUAL='vim'
 export EMAIL='Stas Sușcov <stas@nerd.ro>'
 
 ## Aliases
+alias _='sudo'
 alias sa='sudo apt-get'
 alias sai='sudo apt-get install'
 alias sau='sudo apt-get update'
@@ -48,6 +38,7 @@ alias sar='sudo apt-get remove'
 alias sap='sudo apt-get --purge autoremove'
 alias ac='apt-cache'
 alias stf='sudo tail -f'
+alias l='ls -lah'
 alias 'tf=tail -f'
 alias 'rm=rm -i'
 alias 'mv=mv -i'

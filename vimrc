@@ -6,12 +6,10 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
-Plug 'junegunn/gv.vim'
 Plug 'godlygeek/tabular'
 Plug 'mhinz/vim-startify'
 Plug 'roman/golden-ratio'
 Plug 'kien/ctrlp.vim'
-Plug 'mhartington/oceanic-next'
 Plug 'altercation/vim-colors-solarized'
 Plug 'Raimondi/delimitMate'
 Plug 'mhinz/vim-signify'
@@ -19,12 +17,11 @@ Plug 'Yggdroot/indentLine'
 Plug 'mileszs/ack.vim'
 Plug 'gmarik/sudo-gui.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'benekastah/neomake'
 Plug 'ervandew/supertab'
 Plug 'sheerun/vim-polyglot'
 Plug 'klen/python-mode'
 Plug 'vim-ruby/vim-ruby'
-Plug 'morhetz/gruvbox'
+Plug 'fxn/vim-monochrome'
 
 call plug#end()
 
@@ -57,8 +54,6 @@ set list
 let color="true"
 set t_Co=256
 set gfn=Mononoki\ 14
-" colorscheme solarized
-set background=light
 
 if has("gui_running")
   set guioptions-=m
@@ -67,9 +62,11 @@ if has("gui_running")
   set guioptions-=R
   set guioptions-=l
   set guioptions-=L
-  colorscheme gruvbox
+  colorscheme solarized
+  set background=light
 else
-  set background=dark
+  let g:monochrome_italic_comments = 1
+  colorscheme monochrome
 endif
 
 " Keyboard maps
@@ -99,12 +96,11 @@ let g:netrw_use_errorwindow = 0
 let netrw_list_hide         = '^\(\..\{-}\.sw.\|.\{-}\.pyc\)$'
 
 " Files
-autocmd! BufWritePost * Neomake
+" autocmd! BufWritePost * Neomake
 " Remove whitespaces on save
 autocmd FileType * autocmd BufWritePre * :%s/\s\+$//e
 " More file types
 autocmd BufNewFile,BufRead *.sls set filetype=yaml
-autocmd BufNewFile,BufRead *.embl set filetype=emblem
 " Enable Spell Checking for markdown files
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.markdown setlocal spell
@@ -112,6 +108,7 @@ autocmd BufRead,BufNewFile *.rst setlocal spell
 
 " Status line
 let g:lightline = {
+  \ 'colorscheme': 'solarized',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]

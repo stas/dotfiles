@@ -1,6 +1,7 @@
 [user]
-  mail = stas@net.utcluj.ro
+  email = stas@nerd.ro
   name = Stas SUȘCOV
+  signingkey = FA8928DF
 
 [alias]
   co = checkout
@@ -33,6 +34,9 @@
   changed = green
   untracked = cyan
 
+[fetch]
+  prune = true
+
 [push]
   default = current
 
@@ -46,5 +50,11 @@
   autocrlf = input
   safecrlf = warn
 
-[web]
-  browser = chromium
+[commit]
+  gpgsign = true
+
+[filter "lfs"]
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
